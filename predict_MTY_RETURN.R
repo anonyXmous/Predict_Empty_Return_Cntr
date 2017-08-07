@@ -143,7 +143,7 @@ GridSearch_regression <- function(model.label,
 }
 
 ###################################### main ######################################
-fname = 'c:/Users/bacoyjo/export.csv'
+fname = 'c:/input_file.csv'
 
 # target variable 
 target_var = c('TRAVEL_TIME_HOURS')
