@@ -87,7 +87,6 @@ GridSearch_regression <- function(model.label,
     if(!missing(GridObject)) {
       xgbGrid = GridObject 
     } else {
-      #xgbGrid = expand.grid(nrounds=1000, 
       xgbGrid = expand.grid(nrounds= c(5, 10, 100),
                             eta    = c(0.01, 0.05, 0.1, 0.3, 0.5), # step size shrinkage 
                             lambda = c(0), # L2 Regularization 
@@ -143,7 +142,7 @@ GridSearch_regression <- function(model.label,
 }
 
 ###################################### main ######################################
-fname = 'c:/input_file.csv'
+fname = 'c:/Users/bacoyjo/export.csv'
 
 # target variable 
 target_var = c('TRAVEL_TIME_HOURS')
@@ -164,7 +163,6 @@ str(ff_input)
 # Generate features
 ff_input$TRAVEL_TIME_HOURS = ff_input$MTY_RTN_TRANSITTIME_ACTUAL
 
-ff_input$VOLUME = log(ff_input$VGM_WT/ff_input$CNTR_TEU)
 ff_input_select = ff_input[,c(cont_var, target_var, index_var)]
 for(i in c(cont_var, target_var))
   ff_input_select[,i]<-as.numeric(ff_input_select[,i])
@@ -195,9 +193,7 @@ cl<-makeCluster(6)
 registerDoParallel(cl)
 
 controlObject <- trainControl(method = "cv", number = 10, returnResamp = "all", search = "grid", verboseIter = TRUE, allowParallel = TRUE)
-#controlObject <- trainControl(method = "repeatedcv", repeats = 3, number = 10, returnResamp = "all", search = "grid", verboseIter = TRUE, allowParallel = TRUE)
 xgbGrid = expand.grid(nrounds= c(5, 10, 100), 
-                      # max_depth = c(2,4,6,8,10,14),   #TEST
                       eta    = c(0.01, 0.05, 0.1, 0.3, 0.5), # learning rate
                       lambda = c(0), # L2 Regularization 
                       alpha  = c(1)) # L1 Regularization
