@@ -3,7 +3,11 @@ Second capstone project on predicting return of empty containers by customer in 
 
 File descriptions:
 
+SecondCapstoneMilestoneReport.docx - Second capstone milestone report  
+
 SecondCapstoneProposal.docx -	Second capstone proposal document <br>
+
+Slide_Deck_2ndCapstone.pptx - Second capstone slide deck
 
 extract_mty_rtn.sql - Main SQL script to prepare data, clean and formatting
 
